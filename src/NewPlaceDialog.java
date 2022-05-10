@@ -1,0 +1,32 @@
+package src;
+import java.util.Optional;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+
+public class NewPlaceDialog extends InputDialog {
+
+    private TextField placeField = new TextField();
+    public NewPlaceDialog() {
+        super(AlertType.CONFIRMATION);
+        grid.addRow(0, new Label("Name of place:"), placeField);
+    }
+    public String getName() {
+        return placeField.getText();
+    }
+
+    public String spawnNewPlaceDialog() {
+        
+        setTitle("Name");
+        Optional<ButtonType> result = showAndWait();
+        if (result.get() == ButtonType.OK) {
+            return getName();
+        }
+        return "";
+    }
+}
