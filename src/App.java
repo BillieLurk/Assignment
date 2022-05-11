@@ -52,7 +52,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primStage) throws Exception {
-
+        
         stage = primStage;
         primStage.setTitle("PathFinder");
         primStage.setResizable(false);
