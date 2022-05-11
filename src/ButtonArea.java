@@ -43,6 +43,7 @@ public class ButtonArea extends HBox{
         Button changeConnection = new Button();
         changeConnection.setText("Change Connection");
         changeConnection.setId("btnChangeConnection");
+        changeConnectionEvent(changeConnection);
 
         getChildren().addAll(findPath, showConnection, newPlace, newConnection, changeConnection);
         setSpacing(10);
@@ -52,6 +53,13 @@ public class ButtonArea extends HBox{
         
     }
     
+    private void changeConnectionEvent(Button button) {
+        button.setOnAction(event -> {
+            outputArea.changeConnection();
+        });
+
+    }
+
     private void newPlaceEvent(Button button) {
         button.setOnAction(event -> {
             outputArea.setCanCreatePlace(true);

@@ -29,7 +29,7 @@ class ShowConnection extends InputDialog{
         setTitle("Connection");
         setHeaderText("Connection from "+ placeA.getName() + " to "+ placeB.getName());
         Optional<ButtonType> result = showAndWait();
-        if (result.get() == ButtonType.OK)
+        if (result.isPresent() && result.get() == ButtonType.OK)
             return;
         } else {
             Alert alert = new Alert(AlertType.ERROR, "Error: No connection!");

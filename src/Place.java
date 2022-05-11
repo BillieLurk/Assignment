@@ -43,6 +43,10 @@ public class Place extends Circle {
         return getName();
     }
 
+    public String toSave() {
+        return getName()+";"+getCenterX()+";"+getCenterY()+";";
+    }
+
 
     class ClickHandler implements EventHandler<MouseEvent> {
 

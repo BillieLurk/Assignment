@@ -17,14 +17,14 @@ public class FileMenu extends ToolBar {
 
     App app;
     OutputArea outputArea;
-    
+
     public FileMenu(App app, OutputArea outputArea) {
         this.app = app;
         this.outputArea = outputArea;
 
         buildToolBar();
     }
-    
+
     private void buildToolBar() {
         MenuBar menuBar = new MenuBar();
         menuBar.setId("menu");
@@ -35,13 +35,15 @@ public class FileMenu extends ToolBar {
 
         MenuItem open = new MenuItem("Open");
         open.setId("menuOpenFile");
+        openEvents(open);
 
         MenuItem save = new MenuItem("Save");
         save.setId("menuSaveFile");
+        saveEvents(save);
 
         MenuItem saveImage = new MenuItem("Save Image");
         saveImage.setId("menuSaveImage");
-        
+
         MenuItem exit = new MenuItem("Exit");
         exit.setId("menuExit");
 
@@ -52,23 +54,25 @@ public class FileMenu extends ToolBar {
         menuBar.getMenus().add(file);
         menuBar.setId("menuBar");
 
-        
         getItems().add(menuBar);
         setPadding(new Insets(0, 0, 0, 0));
     }
 
     private void newMapEvents(MenuItem newMap) {
-        newMap.setOnAction( event -> {
-            try {
-                outputArea.setImage(new Image(new FileInputStream("src/europa.gif")));
+        newMap.setOnAction(event -> {
+            outputArea.newMap("src/europa.gif");
+        });
+    }
 
-                app.getStage().sizeToScene();
-                
-                //enable buttons
-                app.setButtonsDisable(false);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+    private void openEvents(MenuItem newMap) {
+        newMap.setOnAction(event -> {
+            outputArea.loadSave("src/europa.graph");
+        });
+    }
+
+    private void saveEvents(MenuItem newMap) {
+        newMap.setOnAction(event -> {
+            outputArea.save("src/europa.graph");
         });
     }
 }

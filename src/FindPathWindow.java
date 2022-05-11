@@ -44,7 +44,7 @@ class FindPathWindow extends InputDialog {
             setTextArea(sb.toString());
 
             Optional<ButtonType> result = showAndWait();
-            if (result.get() == ButtonType.OK) {
+            if (result.isPresent() && result.get() == ButtonType.OK) {
                 return;
             }
         } else {

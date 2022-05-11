@@ -48,7 +48,7 @@ class ConnectionWindow extends InputDialog {
             }
             
             Optional<ButtonType> result = showAndWait();
-            if (result.get() == ButtonType.OK) {
+            if (result.isPresent() && result.get() == ButtonType.OK) {
                 //remove should be required in the form
                 if(getConnectionName().isEmpty() || getTime().isEmpty()) {
                     Alert alert = new Alert(AlertType.ERROR, "Error: One or more text fields are empty");
