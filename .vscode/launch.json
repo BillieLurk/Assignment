@@ -17,14 +17,14 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "Assignment_b4ba7193",
-            "vmArgs": "--module-path javafx-sdk-18/lib/ --add-modules=javafx.controls"
+            "vmArgs": "--module-path lib/javafx-sdk-18/lib/ --add-modules=javafx.controls"
         },
         {
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "vmArgs": "--module-path javafx-sdk-18/lib/ --add-modules=javafx.controls"
+            "vmArgs": "--module-path lib/javafx-sdk-18/lib/ --add-modules=javafx.controls"
         },
         {
             "type": "java",
