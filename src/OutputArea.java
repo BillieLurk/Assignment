@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
@@ -263,6 +264,11 @@ public class OutputArea extends Pane implements Serializable {
     public void loadSave(String path) {
         SaveHandler sh = new SaveHandler(this);
         sh.loadGraph(path);
+    }
+
+    public void makeSnapshot(){
+        SaveHandler sh = new SaveHandler(this);
+        sh.saveImage(snapshot(null, null));
     }
 
     class ClickHandler implements EventHandler<MouseEvent> {
