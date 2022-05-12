@@ -1,12 +1,8 @@
 package src;
 
 import javafx.geometry.*;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 public class ButtonArea extends HBox{
 

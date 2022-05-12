@@ -1,14 +1,10 @@
 package src;
 
 import java.util.Optional;
-
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 
 class ShowConnection extends InputDialog{
     private TextField connectionName = new TextField();

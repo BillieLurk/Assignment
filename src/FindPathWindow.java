@@ -2,13 +2,9 @@ package src;
 
 import java.util.List;
 import java.util.Optional;
-
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
 
 class FindPathWindow extends InputDialog {
 

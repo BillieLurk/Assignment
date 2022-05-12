@@ -1,17 +1,10 @@
 package src;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 
 public class FileMenu extends ToolBar {
 
