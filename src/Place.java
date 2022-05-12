@@ -15,6 +15,7 @@ public class Place extends Circle {
         super(x, y, r);
         this.name = name;
         setFill(Color.BLUE);
+        setId(name);
 
         setOnMouseClicked(new ClickHandler());
     }
