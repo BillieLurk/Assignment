@@ -9,6 +9,14 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "src.App",
+            "projectName": "Assignment_528e6d1a",
+            "vmArgs": "--module-path lib/javafx-sdk-18/lib/ --add-modules=javafx.controls"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "src.App",
             "projectName": "Assignment_b4ba7193",
             "vmArgs": "--module-path lib/javafx-sdk-18/lib/ --add-modules=javafx.controls"
         },
@@ -19,6 +27,6 @@
             "mainClass": "App",
             "projectName": "Assignment_b4ba7193",
             "vmArgs": "--module-path lib/javafx-sdk-18/lib/ --add-modules=javafx.controls"
-        },
+        }
     ]
 }
