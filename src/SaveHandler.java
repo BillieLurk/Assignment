@@ -1,5 +1,6 @@
 package src;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,6 +9,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Alert;
+import javafx.scene.image.WritableImage;
 
 public class SaveHandler {
 
@@ -84,6 +91,17 @@ public class SaveHandler {
         outputArea.setImage(getImageFilePath());
         outputArea.loadPlaces(new ArrayList<>(places.values()));
         outputArea.loadPaths(paths);
+    }
+
+    public void saveImage(WritableImage image) {
+        try{
+            
+            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
+            ImageIO.write(bufferedImage, "png", new File("capture.png"));
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR,"IO-fel "+e.getMessage());
+            alert.showAndWait();
+        }
     }
 
 

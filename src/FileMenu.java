@@ -43,6 +43,7 @@ public class FileMenu extends ToolBar {
 
         MenuItem saveImage = new MenuItem("Save Image");
         saveImage.setId("menuSaveImage");
+        saveMapEvents(saveImage);
 
         MenuItem exit = new MenuItem("Exit");
         exit.setId("menuExit");
@@ -73,6 +74,12 @@ public class FileMenu extends ToolBar {
     private void saveEvents(MenuItem newMap) {
         newMap.setOnAction(event -> {
             outputArea.save("src/europa.graph");
+        });
+    }
+
+    private void saveMapEvents(MenuItem saveImage) {
+        saveImage.setOnAction(event -> {
+            outputArea.makeSnapshot();
         });
     }
 }
