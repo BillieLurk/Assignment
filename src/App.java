@@ -24,7 +24,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primStage) throws Exception {
-        
+
         stage = primStage;
         primStage.setTitle("PathFinder");
         primStage.setResizable(false);
@@ -44,6 +44,16 @@ public class App extends Application {
         primStage.setScene(scene);
         primStage.show();
 
+        stage.setOnCloseRequest(event -> {
+            if(outputContainer.getOutputAreaChanged()) {
+                event.consume();
+                ExitWindow exitWindow = new ExitWindow();
+                if(exitWindow.spawnExitWindow()) {
+                    stage.close();
+                }
+            }
+        });
+
         setButtonsDisable(true);
     }
 
@@ -59,8 +69,6 @@ public class App extends Application {
         }
     }
 
-    
-
     public void setCursorCroshair(Boolean value) {
         if (value == true) {
             scene.setCursor(Cursor.CROSSHAIR);
@@ -69,5 +77,4 @@ public class App extends Application {
         }
     }
 
-    
 }

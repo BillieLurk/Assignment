@@ -88,6 +88,7 @@ public class SaveHandler {
         outputArea.setImage(getImageFilePath());
         outputArea.loadPlaces(new ArrayList<>(places.values()));
         outputArea.loadPaths(paths);
+        outputArea.setOutputAreaChanged(false);
     }
 
     public void saveImage(WritableImage image) {

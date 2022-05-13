@@ -26,7 +26,7 @@ class ConnectionWindow extends InputDialog {
 
     public String getTime() {
 
-        return (time.getText());
+        return time.getText();
     }
 
     public ArrayList<Object> spawnConnectionWindow(ListGraph<Place> listGraph, Place placeA, Place placeB) {

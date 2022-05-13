@@ -22,6 +22,8 @@ public class OutputArea extends Pane implements Serializable {
     private ArrayList<Path> paths = new ArrayList<>();
     private ArrayList<Text> labels = new ArrayList<>();
 
+    private boolean outputAreaChanged = false;
+
     private boolean canCreatePlace = false;
 
     private ImageView imageView;
@@ -40,6 +42,14 @@ public class OutputArea extends Pane implements Serializable {
         setOnMouseClicked(new ClickHandler());
 
         listGraph = new ListGraph<>();
+    }
+
+    public void setOutputAreaChanged(boolean val) {
+        outputAreaChanged = val;
+    }
+
+    public boolean getOutputAreaChanged() {
+        return outputAreaChanged;
     }
 
     public List<Place> getPlaces() {
@@ -73,6 +83,7 @@ public class OutputArea extends Pane implements Serializable {
         getChildren().removeAll(places);
         getChildren().removeAll(paths);
         getChildren().removeAll(labels);
+        setOutputAreaChanged(false);
         try {
             imageView.setImage(new Image(new FileInputStream(imageURL)));
         } catch (FileNotFoundException e) {
@@ -127,7 +138,7 @@ public class OutputArea extends Pane implements Serializable {
     }
 
     public void createPlace(MouseEvent event, String name) {
-
+        
         Place place = new Place(name, event.getX(), event.getY());
         Text lable = new Text(name);
         lable.setX(place.getCenterX() + 10);
@@ -139,6 +150,7 @@ public class OutputArea extends Pane implements Serializable {
         labels.add(lable);
 
         listGraph.add(place);
+        setOutputAreaChanged(true);
     }
 
     public void loadPaths(ArrayList<Path> arr) {
@@ -185,6 +197,7 @@ public class OutputArea extends Pane implements Serializable {
 
     public void connectNodes() {
         if (getSelectedPlaces().size() >= 2) {
+            
 
             Place placeA = getSelectedPlaces().get(0);
             Place placeB = getSelectedPlaces().get(1);
@@ -193,12 +206,14 @@ public class OutputArea extends Pane implements Serializable {
             ArrayList<Object> values = dialog.spawnConnectionWindow(listGraph, placeA, placeB);
 
             if (!values.isEmpty()) {
+                
                 listGraph.connect(placeA, placeB, (String) values.get(0), (int) values.get(1));
 
                 Path path = new Path(placeA, placeB, (String) values.get(0), (int) values.get(1));
                 paths.add(path);
                 path.setStrokeWidth(5);
                 getChildren().add(path);
+                setOutputAreaChanged(true);
             }
         } else {
             Alert alert = new Alert(AlertType.ERROR, "Error: Two places must be selected");
@@ -244,6 +259,7 @@ public class OutputArea extends Pane implements Serializable {
                 Edge<Place> edge = listGraph.getEdgeBetween(placeA, placeB);
                 listGraph.disconnect(placeA, placeB);
                 listGraph.connect(placeA, placeB, edge.getName(), newTime);
+                setOutputAreaChanged(true);
             }
         } else {
             Alert alert = new Alert(AlertType.ERROR, "Error: Two places must be selected");
